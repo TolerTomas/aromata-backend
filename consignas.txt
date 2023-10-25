@@ -1,0 +1,16 @@
+crear un array de 3 objetos llamado ProductoyMercancia
+
+cadaproducto tendra las claves:
+nombre
+modelo
+precio
+paisOrigen
+
+construir un enrutador q sea capaz de: 
+l 1) obtener todos los productos
+l 2) obtener todos los productos cuyo precio sea mayor a 100
+3) modificar un  producto existente por un nuevo objeto, manejar el caso para cuando dicho elemento no existe
+l 4) eliminar un producto por su modelo manejar el  caso para cuando dicho objeto no exista
+l 5) obtener un producto por su pais de origen
+l 6) obtener su producto por su precio
+7) crear un nuevo producto siempre y cuando posea  las mismas claves que los productos restantes

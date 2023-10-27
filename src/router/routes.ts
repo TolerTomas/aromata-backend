@@ -6,7 +6,7 @@ router.get('/', (_: Request, res: Response) => {
     res.send('Aromata Almacen Natural API');
 });
 
-let ProductosYMercancia = [
+let ProductosYMercancia: Array<any> = [
     {
         nombre: "Juan Ignacio Kristich",
         modelo: "2006",
@@ -79,9 +79,33 @@ router.get('/products/paisOrigen/:paisOrigen', (req: Request, res: Response) => 
 // agregar un producto
 router.post('/products/crear', (req: Request, res: Response) => {
     const data: Object = req.body;
+    const keys: Array<String> = Object.keys(data);
 
-    console.log(Object.keys(data))
-    return res.send(Object.keys(data))
+    if (keys.includes('nombre') && keys.includes('modelo') && keys.includes('precio') && keys.includes('paisOrigen')) {
+        ProductosYMercancia.push(data);
+        return res.send(ProductosYMercancia)
+    }
+
+    return res.send('keys do not match')
+});
+
+// modificar un producto
+router.put('/products/editar/:idx', (req: Request, res: Response) => {
+    const data: Object = req.body;
+    const keys: Array<String> = Object.keys(data);
+
+    const idx = parseInt(req.params.idx);
+
+    if (keys.includes('nombre') && keys.includes('modelo') &&
+        keys.includes('precio') && keys.includes('paisOrigen')) {
+
+        if (idx < 0 || idx > ProductosYMercancia.length) return res.send('idx out of range')
+
+        ProductosYMercancia[idx] = data;
+        return res.json(ProductosYMercancia)
+    }
+
+    return res.send('keys do not match')
 });
 
 export default router;

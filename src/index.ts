@@ -1,15 +1,12 @@
-import express, { Express } from 'express';
+import express from 'express';
 import router from './router/routes';
 
-const app: Express = express();
-const PORT: number = 8080;
+const app = express();
+const PORT = 5000;
 
 app.use(express.json());
 
-app.use(express.urlencoded());
-
 app.use('/api', router);
-
 
 app.listen(PORT, () => {
     console.log('Server on port: ' + PORT);

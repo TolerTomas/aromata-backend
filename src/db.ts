@@ -1,4 +1,28 @@
-const db = [
+import 'reflect-metadata'
+import { DataSource } from 'typeorm';
+import { Product } from './models/Product';
+
+export const AppDataSource = new DataSource({
+    type: 'mysql',
+    host: '127.0.0.1',
+    username: 'root',
+    password: '1234',
+    database: 'AromataDB',
+    synchronize: true,
+    logging: true,
+    entities: [Product],
+    subscribers: [],
+    migrations: []
+});
+
+type Producto = {
+    id: number
+    name: string
+    price: number
+    image: string
+}
+
+export const db: Array<Producto> = [
     {
         id: 1,
         name: 'crowie frutilla',
@@ -22,7 +46,11 @@ const db = [
         name: 'crowie chocolate N.',
         price: 1500,
         image: 'crowie-4.jpeg'
+    },
+    {
+        id: 5,
+        name: 'Pan integral',
+        price: 4000,
+        image: 'pan.jpg'
     }
 ]
-
-export default db;

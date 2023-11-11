@@ -9,7 +9,7 @@ export class Product {
     name!: string
 
     @Column()
-    price!: string
+    price!: number
 
     @Column()
     image!: string

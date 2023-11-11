@@ -1,38 +1,9 @@
-GET http://127.0.0.1:5000/api/products
-
-###
-GET http://127.0.0.1:5000/api/products100
-
-###
-DELETE  http://127.0.0.1:5000/api/products/2006
-
-###
-GET http://127.0.0.1:5000/api/products/precio/1900
-
-###
-GET http://127.0.0.1:5000/api/products/paisOrigen/Argentina
-
-###
-POST http://127.0.0.1:5000/api/products/crear
+### ECOMERCE
+POST http://127.0.0.1:5000/ecommerce/addProduct
 Content-Type: application/json
 
 {
-    "nombre": "Martin Santos",
-    "modelo": "1998",
-    "precio": 10000,
-    "paisOrigen": "Uruguay"
+    "name": "crowie frutilla",
+    "price": 1500,
+    "image": "crowie-1.jpeg"
 }
-
-###
-PUT http://127.0.0.1:5000/api/products/editar/1
-Content-Type: application/json
-
-{
-    "nombre": "Maximo Soria",
-    "modelo": "1492",
-    "precio": 2008,
-    "paisOrigen": "Brasil"
-}
-
-### ECOMMERCE
-GET http://127.0.0.1:5000/ecommerce/productImage/pan.jpg

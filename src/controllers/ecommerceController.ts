@@ -14,6 +14,8 @@ export const getProductImage = (req: Request, res: Response) => {
 }
 
 export const addProduct = async (req: Request, res: Response) => {
+    console.log(req.body);
+    
     const { name, price, image } = req.body;
     const newProduct = new Product();
     newProduct.name = name;

@@ -1,8 +1,7 @@
 import express from 'express';
-import EcommerceRouter from './router/ecommerce'
-import cors from 'cors'
-
+import cors from 'cors';
 import { AppDataSource } from './db';
+import ecommerceRouter from './router/router';
 
 const app = express();
 const PORT = 5000;
@@ -10,14 +9,17 @@ const PORT = 5000;
 app.use(express.json());
 app.use(cors({origin: '*'}));
 
-app.use('/ecommerce', EcommerceRouter);
+app.use('/', ecommerceRouter);
 
 // docker run -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=AromataDB -p 3306:3306 mysql
-AppDataSource.initialize()
+AppDataSource
+    .initialize()
     .then(() => {
         console.log('DB connected');
         app.listen(PORT, () => {
             console.log('Server on port: ' + PORT);
         });
     })
-    .catch(err => {throw err});
+    .catch(err => {
+        throw new Error(err);
+    });

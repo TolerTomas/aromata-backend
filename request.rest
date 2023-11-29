@@ -1,9 +1,42 @@
-### ECOMERCE
-POST http://127.0.0.1:5000/ecommerce/addProduct
+POST http://127.0.0.1:5000/addProduct
 Content-Type: application/json
 
 {
     "name": "crowie frutilla",
-    "price": 1500,
-    "image": "crowie-1.jpeg"
+    "image": "crowie-1.jpeg",
+    "price": 1600
 }
+
+
+###
+POST http://127.0.0.1:5000/addProduct
+Content-Type: application/json
+
+{
+    "name": "crowie coco",
+    "image": "crowie-2.jpeg",
+    "price": 1600
+}
+
+###
+POST http://127.0.0.1:5000/addProduct
+Content-Type: application/json
+
+{
+    "name": "crowie limon",
+    "image": "crowie-3.jpeg",
+    "price": 1600
+}
+
+###
+POST http://127.0.0.1:5000/addProduct
+Content-Type: application/json
+
+{
+    "name": "crowie chocolate",
+    "image": "crowie-4.jpeg",
+    "price": 1600
+}
+
+### get products
+GET http://127.0.0.1:5000/products

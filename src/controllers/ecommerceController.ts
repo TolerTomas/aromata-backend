@@ -3,6 +3,7 @@ import { join } from "path";
 import { AppDataSource } from "../db";
 import { Product } from "../models/Product";
 import { User } from "../models/User";
+import { Cart } from "../models/Cart";
 
 export const getProducts = async (_: Request, res: Response) => {
     const products = await AppDataSource.manager.find(Product);
@@ -37,6 +38,38 @@ export const getProductImageById = async (req: Request, res: Response) => {
     if (product)
         return res.sendFile(join(__dirname, '..', 'images', product?.image));
     
+
+}
+
+export const getProductPriceByID = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    const product = await AppDataSource.manager.findOneBy(Product, {
+        id: parseInt(id)
+    });
+
+    if (product)
+        return res.send(product?.price +'');
+
+    return res.send('ID Error');
+
+}
+
+export const realizarCompra = async (req: Request, res: Response) => {
+
+    console.log(req.body);
+    
+
+    if (req.body.productosCarrito.length === 0) return res.send('No se enviaron productos')
+
+    const newCart = new Cart();
+
+    newCart.total = req.body.totalCarrito;
+    newCart.products = JSON.stringify(req.body.productosCarrito);
+
+    await AppDataSource.manager.save(newCart);
+
+    return res.send('Carrito creado y guardado')
 
 }
 
